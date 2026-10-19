@@ -1,0 +1,9 @@
+# Verilator build output
+obj_dir/
+
+# Icarus Verilog
+*.vvp
+*.vcd
+
+# Hex files (generated, not source)
+*.hex
