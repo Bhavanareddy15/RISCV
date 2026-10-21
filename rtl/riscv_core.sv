@@ -18,7 +18,7 @@ module riscv_core
 
   always_ff @(posedge clk_i or negedge rst_ni) begin
     if (!rst_ni) begin
-      pc_q <= '0;
+      pc_q <= 32'h8000_0000;
     end else begin
       pc_q <= pc_next;
     end

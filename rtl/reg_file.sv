@@ -2,26 +2,27 @@
 // Register x0 is hardwired to zero; writes to x0 are ignored.
 
 module reg_file #(
-  parameter  int unsigned DataWidth = 32,
-  parameter  int unsigned NumRegs   = 32,
-  localparam int unsigned AddrWidth = $clog2(NumRegs)
+  parameter DataWidth = 32,
+  parameter NumRegs   = 32
 ) (
   input  logic                  clk_i,
   input  logic                  rst_ni,
 
   // Write port
   input  logic                  wr_en_i,
-  input  logic [AddrWidth-1:0]  wr_addr_i,
+  input  logic [4:0]            wr_addr_i,
   input  logic [DataWidth-1:0]  wr_data_i,
 
   // Read port A (rs1)
-  input  logic [AddrWidth-1:0]  rd_addr_a_i,
+  input  logic [4:0]            rd_addr_a_i,
   output logic [DataWidth-1:0]  rd_data_a_o,
 
   // Read port B (rs2)
-  input  logic [AddrWidth-1:0]  rd_addr_b_i,
+  input  logic [4:0]            rd_addr_b_i,
   output logic [DataWidth-1:0]  rd_data_b_o
 );
+
+  localparam AddrWidth = $clog2(NumRegs);
 
   logic [DataWidth-1:0] regs_q[NumRegs];
 

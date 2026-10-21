@@ -1,9 +1,42 @@
-# Verilator build output
+# ── Verilator ────────────────────────────────────────────
 obj_dir/
 
-# Icarus Verilog
+# ── Icarus Verilog ────────────────────────────────────────
 *.vvp
 *.vcd
 
-# Hex files (generated, not source)
+# ── Toolchain build artefacts ────────────────────────────
+# assembler object files
+*.o
+# linked ELF binaries
+*.elf
+# generated Verilog hex ($readmemh)
 *.hex
+# linker map files
+*.map
+# assembler listing files
+*.lst
+
+# ── Simulation logs (generated, not source) ──────────────
+verif/logs/
+sim/
+
+# ── Waveforms ─────────────────────────────────────────────
+*.fst
+*.ghw
+*.lxt
+*.lxt2
+
+# ── Python ────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# ── OS / editor noise ─────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/settings.json

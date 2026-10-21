@@ -3,8 +3,7 @@
 // Supports byte (LB/SB), halfword (LH/SH), and word (LW/SW) accesses.
 
 module data_mem #(
-  parameter  int unsigned DepthWords = 256,
-  localparam int unsigned AddrWidth  = $clog2(DepthWords)
+  parameter DepthWords = 256
 ) (
   input  logic        clk_i,
 
@@ -15,6 +14,8 @@ module data_mem #(
   input  logic [31:0] wr_data_i,
   output logic [31:0] rd_data_o
 );
+
+  localparam AddrWidth = $clog2(DepthWords);
 
   logic [31:0] mem[DepthWords];
 
@@ -65,8 +66,8 @@ module data_mem #(
   // Extract the addressed byte from the 32-bit word.
   always_comb begin
     unique case (addr_i[1:0])
-      2'b00: byte_rd = mem_word[7:0];
-      2'b01: byte_rd = mem_word[15:8];
+      2'b00: byte_rd = mem_word[ 7: 0];
+      2'b01: byte_rd = mem_word[15: 8];
       2'b10: byte_rd = mem_word[23:16];
       2'b11: byte_rd = mem_word[31:24];
       default: byte_rd = '0;
