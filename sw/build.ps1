@@ -36,5 +36,5 @@ Write-Host "Disassembly:"
 & $ODP -d $elf
 
 # Copy hex to the location instr_mem.sv reads at simulation start
-Copy-Item $hex ..\sim\instr_mem.hex -Force
-Write-Host "Done - copied to ..\sim\instr_mem.hex"
+Copy-Item $hex ..\sw\instr_mem.hex -Force
+Write-Host "Done - copied to ..\sw\instr_mem.hex"
